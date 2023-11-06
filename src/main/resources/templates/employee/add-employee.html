@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+    <title>Add Employee</title>
+</head>
+<body>
+
+<div class="container">
+    <!--
+    #{key}                  -> Displaying values from a message source (Property Files)
+    @{attributeName}        -> Displaying Model Attributes
+    th:each="str : ${strs}" -> Collection Attributes
+    th:if="${condition}"    -> Positive condition
+    th:unless="${condition}"-> Negative condition
+    th:action="@{url}"      -> Go to link
+    -->
+
+    <h3 class="mt-5">Employee Directory</h3>
+    <hr>
+    <p class="h4 mb-4">Save Employee</p>
+
+    <form action="#" th:action="@{/employee/add-employee}" th:object="${employee}" method="post" class="form-group">
+        <input type="hidden" th:field="*{id}">
+        <input class="form-control mb-4 col-4" type="text" th:field="*{firstName}" placeholder="First Name">
+        <input class="form-control mb-4 col-4" type="text" th:field="*{lastName}" placeholder="Last Name">
+        <input class="form-control mb-4 col-4" type="email" th:field="*{email}" placeholder="Email">
+        <button class="mb-4 col-2 btn btn-info" type="submit">Save</button>
+    </form>
+    <hr>
+    <a th:href="@{/employee/list}">Back to Employee List</a>
+
+</div>
+
+</body>
+</html>
